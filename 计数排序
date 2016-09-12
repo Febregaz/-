@@ -1,0 +1,45 @@
+/*规定!!!!!!!!!!!!!!!!所有的元素都比n要小!!!!!!!!!!!!!!!!!!!!*/
+#include<stdio.h>
+int a[100],n;
+void acount()
+{
+    int c[n];
+    for(int i=0;i<n;i++)
+    {
+        c[i]=0;
+    }
+    for(int i=0;i<n;i++)
+    {
+        c[a[i]]++;
+    }
+    int z=0;
+    for(int i=0;i<n;i++)
+    {
+        while(c[i]-->0)
+        {
+            a[z++]=i;
+        }
+    }
+}
+
+void print()
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    while(~scanf("%d",&n))
+    {
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+        }
+        acount();
+        print();
+    }
+}
