@@ -1,0 +1,68 @@
+#include<stdio.h>
+int a[100010],n;
+
+void print()
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+
+void bublesort_1()
+{
+    for(int i=0;i<n-1;i++)
+    {
+        bool flag=false;
+        for(int j=1;j<n;j++)
+        {
+            if(a[j-1]>a[j])
+            {
+                int t=a[j-1];
+                a[j-1]=a[j];
+                a[j]=t;
+                flag=true;
+            }
+        }
+        print();
+        if(flag==false)
+            break;
+    }
+}
+
+void bublesort_2()
+{
+    int index=0;
+    int k=n-1;
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=1;j<=k;j++)
+        {
+            if(a[j-1]>a[j])
+            {
+                int t=a[j-1];
+                a[j-1]=a[j];
+                a[j]=t;
+                index=j-1;
+            }
+        }
+        print();
+        k=index;
+        if(k==0)
+            break;
+    }
+}
+
+int main()
+{
+    while(~scanf("%d",&n))
+    {
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+        }
+        bublesort_1();
+        bublesort_2();
+    }
+}
