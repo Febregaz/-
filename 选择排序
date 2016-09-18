@@ -1,0 +1,37 @@
+#include<stdio.h>
+int a[100],n;
+selectsort()
+{
+    for(int i=0;i<n;i++)
+    {
+        int flag=i;
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[j]<a[flag])
+            {
+                flag=j;
+            }
+        }
+        if(flag!=i)
+        {
+            int t=a[flag];
+            a[flag]=a[i];
+            a[i]=t;
+        }
+    }
+}
+
+int main()
+{
+    printf("ENTER:");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    selectsort();
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
