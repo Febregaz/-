@@ -1,0 +1,69 @@
+#include<stdio.h>
+int h[100],num;
+
+adjustment(int i)
+{
+    int t,flag=0;
+    while(i*2<num&&flag==0)
+    {
+        if(h[i]>h[i*2])
+        {
+            t=i*2;
+        }
+        else
+        {
+            t=i;
+        }
+        if(i*2+1<num)
+        {
+            if(h[i*2+1]<h[t])
+                t=i*2+1;
+        }
+        if(t!=i)
+        {
+            int tp=h[i];
+            h[i]=h[t];
+            h[t]=tp;
+            i=t;
+        }
+        else
+        {
+            flag=1;
+        }
+    }
+}
+
+void unknown(int n)
+{
+    for(int i=n/2-1;i>=0;i--)
+    {
+        adjustment(i);
+    }
+}
+
+int delete_top()
+{
+    int t=h[0];
+    h[0]=h[num-1];
+    num--;
+    adjustment(0);
+    return t;
+}
+
+
+int main()
+{
+    int n;
+    printf("PLEASE ENTER:");
+    scanf("%d",&n);
+    num=n;
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&h[i]);
+    }
+    unknown(n);
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",delete_top());
+    }
+}
