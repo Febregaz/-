@@ -1,0 +1,31 @@
+#include<stdio.h>
+int a[100],n;
+
+void insert_sort()
+{
+    for(int i=1;i<n;i++)
+    {
+        int target=a[i];
+        int j=i;
+        while(j>0&&target<a[j-1])
+        {
+            a[j]=a[j-1];
+            j--;
+        }
+        a[j]=target;
+    }
+}
+
+int main()
+{
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    insert_sort();
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
+    }
+}
